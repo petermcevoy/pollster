@@ -1,4 +1,10 @@
 Pollster::Application.routes.draw do
+
+  resources :users
+  match "session/new" => "sessions#create", :via => :post
+  match "session/new" => "sessions#new", :as => :new_session
+  match "session/destroy" => "sessions#destroy", :via => :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
