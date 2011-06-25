@@ -1,0 +1,61 @@
+<% if false %><!DOCTYPE html>
+<html>
+<head>
+  
+  <!-- loads scripts specified in manifest.json -->
+    <script src="http://dejavis.org/files/stacks/lib/jquery-1.4.2.min.js"></script>
+    <script src="http://dejavis.org/files/stacks/lib/jquery.mousewheel.js"></script>
+    <script src="http://dejavis.org/files/stacks/lib/underscore.js"></script>
+    <script src="http://dejavis.org/files/stacks/lib/protovis-d3.2.js"></script>
+    <script src="http://dejavis.org/files/stacks/lib/unveil.js"></script>
+    <script src="http://dejavis.org/files/stacks/artists.js"></script>
+    <script src="http://dejavis.org/files/stacks/stacks.js"></script>
+    <script src="http://dejavis.org/files/stacks/app.js"></script>
+
+  <link href="http://dejavis.org/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+  
+  <!-- loads additional styles specified in manifest.json -->
+  </head>
+<body>
+  <div id="canvas">
+    
+  </div>
+  </body>
+</html>
+
+<% end %>
+<% if true %>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pollster</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= csrf_meta_tags %>
+  <!-- loads scripts specified in manifest.json -->
+    <script src="/assets/graph/michael-stacks-2b9c97c/lib/jquery-1.4.2.min.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/lib/jquery.mousewheel.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/lib/underscore.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/lib/protovis-d3.2.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/lib/unveil.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/artists.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/stacks.js"></script>
+    <script src="/assets/graph/michael-stacks-2b9c97c/app.js"></script>
+	<style>
+		#canvas { position: absolute; top: 110px; right: 20px; left: 280px; bottom: 20px; border: 1px solid #000; overflow: auto; background: #fff;}
+	</style>
+</head>
+<body>
+	
+	<p>Respond to <%= link_to "http://#{@event.name}.domain.com" %> Poll <span id="poll_n">0</span></p>
+
+	<div class="graph-container">
+		<div id="canvas">
+
+	  </div>
+	</div>
+</body>
+</html>
+<% end %>
+
+

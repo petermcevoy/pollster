@@ -1,6 +1,13 @@
 Pollster::Application.routes.draw do
 
+  match "/events/:id/start" => "events#start"
+  match "/events/:id/graph" => "events#graph", :as => :graph
+  resources :events do
+    resources :polls
+  end
+
   resources :users
+  
   match "session/new" => "sessions#create", :via => :post
   match "session/new" => "sessions#new", :as => :new_session
   match "session/destroy" => "sessions#destroy", :via => :delete

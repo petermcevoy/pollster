@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event: <%= @event.name %></h1>
+<p>Respond to <%= link_to "http://#{@event.name}.domain.com" %></p>
+<p><%= link_to "Goto graph view", graph_path %></p>
+<p>REPORT</p>
+
+<br/>
+<br/>
+<%= link_to 'Edit Event', edit_event_path(@event) %> |
+<%= link_to 'Back to events', events_path %>
