@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag "button" %>
 	<script>
 		var event_id = <%= @poll.event.id %>
+		var info = {poll_id: <%= @poll.id %>, options: <%= @poll.n_options %>}
 	</script>
 <!-- CHANGE= -->
   <%= javascript_include_tag "button", "http://192.168.1.202:9292/faye.js" %>

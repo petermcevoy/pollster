@@ -2,6 +2,9 @@
 //= require jquery_ujs
 
 $(function(){
+	
+
+	
 	//CHANGE=
 	var faye = new Faye.Client('http://192.168.1.202:9292/faye')
 	faye.subscribe("/button/"+event_id, function(data) {
@@ -29,6 +32,9 @@ $(function(){
 			else 																{ $("a.d").hide() }
 
 	}
+	
+	
+		update_view(info)
 	
 		
 });
