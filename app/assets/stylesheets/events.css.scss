@@ -6,6 +6,66 @@ body.events {
   // Place scoped styles here
 }
 
-body.graph {
+body.graph{
+	background:#eee;
+	margin:0;
+	padding:0;
+	canvas {
+		margin:0;
+		padding:0;
+		position:absolute;
+		top:0;
+		left:0;
+		z-index: -1;
+	}
+	margin:0;
+	
+	.graph {
+		width:100%;
+		height:100%;
+		text-align:center;
+		background-color:#eee;
+		padding:20px, 0, 20px, 0;
+	}
+	
+	div.graph_menu {
+		
+		&.new_poll {
+			float:right;
+			width:150px;
+			text-align:right;
+			margin-right:8px;
+			margin-top: 8px;
+		}
+		
+		&.current_poll {
+			float:left;
+			width:160px;
+			text-align:left;
+			margin-left:8px;
+			margin-top: 8px;
+			
+			.poll_status {
+				background-color:black;
+				color:white;
+				padding:2px;
+			}
+			
+		}
+		
+		
+		hr {
+			margin-bottom:8px;
+			margin-top:8px;
+		}
+		
+		opacity: .2;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	
+
+	
 	
 }

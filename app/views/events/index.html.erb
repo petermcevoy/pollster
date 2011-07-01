@@ -1,8 +1,8 @@
-<h1>Listing events</h1>
+
+<h1>Listing your events</h1>
 
 <table>
   <tr>
-    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,9 +10,8 @@
 
 <% @events.each do |event| %>
   <tr>
-    <td><%= event.name %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td width=80><%= link_to event.name, event, :class => "main" %></td>
+    <td width=58><%= link_to ' Settings', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

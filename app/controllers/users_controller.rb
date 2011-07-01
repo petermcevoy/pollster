@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	layout "outside"
   # GET /users/new
   # GET /users/new.json
   def new

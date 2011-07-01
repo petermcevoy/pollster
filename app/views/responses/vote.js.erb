@@ -1,0 +1,3 @@
+<% broadcast "/vote/#{@event.id}/#{@poll.id}" do %>
+	{"value": "<%= @response.value.downcase %>", "id": "<%= @response.identifier %>", "multiple": <%= @poll.multiple %>}
+<% end %>

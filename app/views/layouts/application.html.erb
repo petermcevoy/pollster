@@ -3,14 +3,34 @@
 <head>
   <title>Pollster</title>
   <%= stylesheet_link_tag    "application" %>
+	<link href='http://fonts.googleapis.com/css?family=Carter+One&v2' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= flash[:notice] %>
-<%= flash[:error] %>
+	<header>
+		<h1><a href="/events">Pollster</a></h1>
+	<!--	<ul class="menu">
+			<li><%= link_to "Home", "#" %></li>
+			<li><%= link_to "Events", "#" %></li>
+		</ul>-->
 
-<%= yield %>
+		<span id="user">
+			<%= @current_user.email %>
+			<%= link_to "Log out", destroy_session_path, :action => "destroy", :method => :delete %>
+		</span>
+	</header>
+	<div class="container">
+		<div class="content">
 
+			<p id="notice"><%= notice %></p>
+			<% if flash[:error] %>
+				<p id="error"><%= flash[:error] %></p>
+			<% end %>
+		
+			<%= yield %>
+			
+		</div>
+	</div>
 </body>
 </html>

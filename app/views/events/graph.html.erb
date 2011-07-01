@@ -1,61 +1,70 @@
-<% if false %><!DOCTYPE html>
-<html>
-<head>
-  
-  <!-- loads scripts specified in manifest.json -->
-    <script src="http://dejavis.org/files/stacks/lib/jquery-1.4.2.min.js"></script>
-    <script src="http://dejavis.org/files/stacks/lib/jquery.mousewheel.js"></script>
-    <script src="http://dejavis.org/files/stacks/lib/underscore.js"></script>
-    <script src="http://dejavis.org/files/stacks/lib/protovis-d3.2.js"></script>
-    <script src="http://dejavis.org/files/stacks/lib/unveil.js"></script>
-    <script src="http://dejavis.org/files/stacks/artists.js"></script>
-    <script src="http://dejavis.org/files/stacks/stacks.js"></script>
-    <script src="http://dejavis.org/files/stacks/app.js"></script>
-
-  <link href="http://dejavis.org/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
-  
-  <!-- loads additional styles specified in manifest.json -->
-  </head>
-<body>
-  <div id="canvas">
-    
-  </div>
-  </body>
-</html>
-
-<% end %>
-<% if true %>
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pollster</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= csrf_meta_tags %>
-  <!-- loads scripts specified in manifest.json -->
-    <script src="/assets/graph/michael-stacks-2b9c97c/lib/jquery-1.4.2.min.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/lib/jquery.mousewheel.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/lib/underscore.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/lib/protovis-d3.2.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/lib/unveil.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/artists.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/stacks.js"></script>
-    <script src="/assets/graph/michael-stacks-2b9c97c/app.js"></script>
-	<style>
-		#canvas { position: absolute; top: 110px; right: 20px; left: 280px; bottom: 20px; border: 1px solid #000; overflow: auto; background: #fff;}
-	</style>
+  <%= stylesheet_link_tag "application" %>
+<!-- CHANGE= -->
+  <%= javascript_include_tag "graph", "http://192.168.1.202:9292/faye.js" %>
+  <!-- loads additional styles specified in manifest.json -->
+<script>
+	var event_id = <%= @event.id %>
+	var poll_id = <%= params[:poll_id] %>
+</script>
+<%= csrf_meta_tags %>
 </head>
-<body>
-	
-	<p>Respond to <%= link_to "http://#{@event.name}.domain.com" %> Poll <span id="poll_n">0</span></p>
+<body class="graph">
 
-	<div class="graph-container">
-		<div id="canvas">
-
-	  </div>
+	<div class="graph_menu current_poll">
+		This poll is <span class="poll_status"><%= @event.polls.last.id.to_s == params[:poll_id] ? "CURRENT" : "ARCHIVED" %></span>
+		<% if @event.polls.last.id.to_s == params[:poll_id] %>
+			<hr/>
+			Recieve votes <%= check_box_tag "receives_votes", nil, @poll.receives_votes %><hr/>
+			Show results <%= check_box_tag "show_results", nil, true %><hr/>
+			Allow multiple votes <%= check_box_tag "allow_multiple", nil, @poll.multiple %>
+		<% end %>
+		<hr/>
+		<%= link_to "back", event_path(@event) %>
 	</div>
+
+
+	<div class="graph_menu new_poll">
+		New poll:	<%= link_to "2", event_polls_path(@event, :options => 2), :method => :post %>
+					<%= link_to "3", event_polls_path(@event, :options => 3), :method => :post %>
+					<%= link_to "4", event_polls_path(@event, :options => 4), :method => :post %>
+	</div>
+	
+	<canvas id="canvas" style="border:0px solid black"></canvas>
+	
+	
+	
+	
+	
+
+	<script type="text/javascript" charset="utf-8">
+	
+		<% if @responses %>
+			data = [
+				<% @responses.each do |r| %>
+					{value: "<%= r.value.downcase %>", id: "<%= r.identifier %>"} <%= "," if r != @responses.last %>
+				<% end %>
+			]
+		<% else %>
+			data = []
+		<% end %>
+		
+		
+		$(function(){
+			//========== Set vars
+			colors = {	"a": "<%= @event.options[:color_a] || "#aaaaaa" %>",
+			 			"b": "<%= @event.options[:color_b] || "#123456" %>",
+						"c": "<%= @event.options[:color_c] || "#81A18A" %>",
+						"d": "<%= @event.options[:color_d] || "#A19191" %>" }
+			
+			
+			
+			start_histogram(document.getElementById("canvas"),data)			
+		})
+
+	</script>
+
 </body>
 </html>
-<% end %>
-
-

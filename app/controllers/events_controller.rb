@@ -46,6 +46,13 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_url
   end
+
+	def reset_options
+		@event = @current_user.events.find(params[:id])
+		@event.options = {}
+		@event.save
+		redirect_to events_path, :notice => "Reset colors to default"
+	end
   
   def start
     #starts a new poll if there is'nt one already
@@ -54,7 +61,11 @@ class EventsController < ApplicationController
   end
   
   def graph
-     @event = @current_user.events.find_by_id(params[:id])
+    @event = @current_user.events.find_by_id(params[:id])
+		if params[:poll_id]# if poll_id is existent -> get poll response data	
+			@poll = @event.polls.find_by_id(params[:poll_id])
+			@responses = @poll.responses.all
+		end
      render :layout => false
   end
   

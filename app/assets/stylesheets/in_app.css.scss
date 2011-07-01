@@ -1,0 +1,85 @@
+body {
+	margin:0;
+	background-color:#eee;
+	background-image: url('/green-fibers.png');
+}
+header {
+	width:100%;
+	background-color:black;
+	color:white;
+	height:50px;
+	overflow:auto;
+	border-bottom: 1px solid #666;
+	ul.menu {
+		list-style-type:none;
+		float:left;
+		margin:0;
+		li {
+			display:block;
+			margin-left:4px;
+			margin-right:4px;
+			padding:15px;
+			float:left;
+		}	
+	}
+	a {color:white;}
+	a:hover {background-color:white;color:black;}
+	span#user {
+		float:right;
+		padding:15px;
+	}
+	h1 {
+		font-family: 'Carter One', sans-serif;
+		float:left;
+		padding:15px;
+		margin:0;
+		a, a:visited{
+			color:#eee;
+			text-decoration:none;
+			&:hover {
+				background-color:transparent;
+			}
+		}
+		
+	}
+}
+
+a.main {
+	color:black !important;
+	text-decoration:overline;
+	&:hover {color:white !important;}
+}
+
+div.container {
+	padding-bottom:80px;
+}
+
+div.content {
+	width:400px;
+	padding:20px;
+	background-color:#fff;
+	margin-left:auto;
+	margin-right:auto;
+	
+	margin-top:80px;	
+
+	
+	-moz-box-shadow: 		0px 0px 10px #000;
+	-webkit-box-shadow: 0px 0px 10px #000;
+	box-shadow: 				0px 0px 10px #000;
+}
+
+ul.title_data {
+	list-style-type:none;
+	padding-left:0;
+	li {
+		margin-bottom:8px;
+		width:260px;
+		text-align:right;
+		span.title {
+			float:left;
+			font-weight:bold;
+		}
+	}
+	
+}

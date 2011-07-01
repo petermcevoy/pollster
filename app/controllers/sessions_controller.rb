@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
+	layout "outside"
   def new
+		redirect_to events_path if User.find_by_id(session[:user_id])
   end
   
   def create
@@ -9,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to events_path
     else
       flash.now[:error] = "Email or password is incorrect"
-      render :action => "new"
+      render :action => "new", :layout => false
     end
   end
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=500px; initial-scale=0.6; maximum-scale=0.6; user-scalable=0;" />
+  <%= stylesheet_link_tag "button" %>
+	<script>
+		var event_id = <%= @poll.event.id %>
+	</script>
+<!-- CHANGE= -->
+  <%= javascript_include_tag "button", "http://192.168.1.202:9292/faye.js" %>
+  <!-- loads additional styles specified in manifest.json -->
+  </head>
+<body class="button">
+	
+	
+<h1>Poll #<%= @poll.id %></h1>
+
+		<%= link_to "A", vote_path(@poll.event.id, :value => "A"), :class => "vote_button a", :remote => true %>
+
+		<%= link_to "B", vote_path(@poll.event.id, :value => "B"), :class => "vote_button b", :remote => true %>
+
+		<%= link_to "C", vote_path(@poll.event.id, :value => "C"), :class => "vote_button c", :remote => true %>
+
+		<%= link_to "D", vote_path(@poll.event.id, :value => "D"), :class => "vote_button d", :remote => true %>
+
+
+</body>
+</html>

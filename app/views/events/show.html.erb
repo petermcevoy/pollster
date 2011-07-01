@@ -1,11 +1,24 @@
-<p id="notice"><%= notice %></p>
-
+<p><%= link_to 'Back to events', events_path %></p>
 <h1>Event: <%= @event.name %></h1>
-<p>Respond to <%= link_to "http://#{@event.name}.domain.com" %></p>
-<p><%= link_to "Goto graph view", graph_path %></p>
-<p>REPORT</p>
+<p>
+	<%= link_to "Edit event", edit_event_path(@event) %> |
+	<%= link_to 'Destroy event', event_path(@event), :confirm => 'Are you sure?', :method => :delete %> 
+</p>
+<p>
+	New poll:	<%= link_to "2", event_polls_path(@event, :options => 2), :method => :post %>
+				<%= link_to "3", event_polls_path(@event, :options => 3), :method => :post %>
+				<%= link_to "4", event_polls_path(@event, :options => 4), :method => :post %>
+</p>
+<p>Polls for this event:</p>
+<ul>
+	<% @event.polls.each do |p| %>
+		<li><%= link_to p.created_at, poll_graph_path(@event,p) %><%= " [CURRENT]" if @event.polls.last == p %></li>
+	<% end %>
+	<% if @event.polls.empty? %>
+		<li><i>There are no polls created for this event</i></li>
+	<% end %>
+</ul>
 
 <br/>
 <br/>
-<%= link_to 'Edit Event', edit_event_path(@event) %> |
-<%= link_to 'Back to events', events_path %>
+

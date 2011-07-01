@@ -1,7 +1,7 @@
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2>There is a problem saving this...</h2>
 
       <ul>
       <% @event.errors.full_messages.each do |msg| %>
@@ -15,6 +15,54 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+<br/>
+<h2>Settings</h2>
+		<ul class="title_data">
+<!--			<li><hr/></li>
+			<li>
+				<span class="title">Column width</span>
+				<input type="text" class="input_tiny"/>
+			</li>
+			<li>
+				<span class="title">Square size</span>
+				<input type="text" class="input_tiny"/>
+			</li> 
+			<li><hr/></li>-->
+			<li >
+				<p style="text-align:left;">For colors, you can either use <br/> - color names - blue<br/> - hex values - #333333 <br/>or rgb values - rgb(125,125,125)</p>
+			</li>
+			<li>
+				<span class="title">Background color</span>
+				<%= text_field_tag "event[options][bg_color]", @event.options[:bg_color] || "#eeeeee", :class => "input_small" %>
+			</li>
+			<li>
+				<span class="title">Color A</span>
+				<%= text_field_tag "event[options][color_a]", @event.options[:color_a] || "#333333", :class => "input_small" %>
+			</li>
+			<li>
+				<span class="title">Color B</span>
+				<%= text_field_tag "event[options][color_b]", @event.options[:color_b] || "#123456", :class => "input_small" %>
+			</li>
+			<li>
+				<span class="title">Color C</span>
+				<%= text_field_tag "event[options][color_c]", @event.options[:color_c] || "#81A18A", :class => "input_small" %>
+			</li>
+			<li>
+				<span class="title">Color D</span>
+				<%= text_field_tag "event[options][color_d]", @event.options[:color_d] || "#A19191", :class => "input_small" %>
+			</li>
+			
+			<% if @event.id %>
+			<li>
+				<span class="title"><%= link_to "Reset colors", :controller => "events", :action => "reset_options" %></span>&nbsp;
+				
+			</li>
+			<% end %>
+		</ul>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

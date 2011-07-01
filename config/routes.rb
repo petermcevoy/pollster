@@ -1,16 +1,23 @@
 Pollster::Application.routes.draw do
 
+	match "/events/:event_id/poll/:id/graph" => "polls#graph", :as => :poll_graph
+	match "/events/:event_id/vote" => "responses#vote", :as => :vote
+	match "/events/:id/button" => "responses#button", :as => :button
   match "/events/:id/start" => "events#start"
   match "/events/:id/graph" => "events#graph", :as => :graph
+  match "/events/:id/reset_options" => "events#reset_options"
   resources :events do
     resources :polls
+		
   end
 
   resources :users
   
   match "session/new" => "sessions#create", :via => :post
-  match "session/new" => "sessions#new", :as => :new_session
-  match "session/destroy" => "sessions#destroy", :via => :delete
+  match "session/create" => "sessions#create", :via => :post, :as => :create_session
+  match "session/destroy" => "sessions#destroy", :via => :delete, :as => :destroy_session
+
+	match "/" => "sessions#new", :as => :new_session
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

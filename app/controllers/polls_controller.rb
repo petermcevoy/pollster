@@ -22,51 +22,35 @@ class PollsController < ApplicationController
     end
   end
 
-  # GET /polls/new
-  # GET /polls/new.json
-  def new
-    @event = Event.find_by_id(params[:event_id])
-    @poll = @event.polls.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @poll }
-    end
-  end
-
-  # GET /polls/1/edit
-  def edit
-    @poll = Poll.find(params[:id])
-  end
-
   # POST /polls
   # POST /polls.json
   def create
     @event = @current_user.events.find_by_id(params[:event_id])
-    @poll = @event.polls.new(params[:poll])
-
+    @poll = @event.polls.new(:n_options => params[:options])
+		
     if @poll.save
-        redirect_to event_path(@event.id), :notice => 'Poll was successfully created.'
+				#tell buttons to update
+				broadcast "/button/#{@event.id}",	{:poll_id => @poll.id, :options => params[:options]}
+	
+        redirect_to graph_path(@event, :poll_id => @poll.id)
     else
-      render :action => "new"
+      flash[:error] = "Could not create new poll"
+			redirect_to event_path(@event)
     end
   end
 
-  # PUT /polls/1
-  # PUT /polls/1.json
-  def update
-    @poll = Poll.find(params[:id])
 
-    respond_to do |format|
-      if @poll.update_attributes(params[:poll])
-        format.html { redirect_to @poll, :notice => 'Poll was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @poll.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+	def update
+		@event = @current_user.events.find_by_id(params[:event_id])
+    @poll = @event.polls.find_by_id(params[:id])
+
+		@poll.multiple = params[:multiple] if params[:multiple]
+		@poll.receives_votes = params[:receives_votes] if params[:receives_votes]
+		
+		@poll.save
+		render :text => "OK"
+	end
+
 
   # DELETE /polls/1
   # DELETE /polls/1.json
@@ -79,4 +63,10 @@ class PollsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+	def graph
+		#redirects to events#graph action
+		redirect_to graph_path(params[:event_id], :poll_id => params[:id])
+	end
+
 end

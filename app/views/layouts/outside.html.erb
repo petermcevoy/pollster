@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pollster</title>
+  <%= stylesheet_link_tag "reset", "text", "formalize", "outside" %>
+	<link href='http://fonts.googleapis.com/css?family=Carter+One&v2' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "outside" %>
+</head>
+<body>
+	<h1 class="logo">Pollster</h1>
+	<p class="slogan">A little project for [NICE TEXT HERE]</p>
+	
+	<div class="container">
+		<div class="content">
+			<% if notice %><p id="notice"><%= notice %></p><% end %>
+			<% if flash[:error] %><p id="error"><%= flash[:error] %></p><% end %>
+		
+			<%= yield %>
+			
+		</div>
+	</div>
+</body>
+</html>
