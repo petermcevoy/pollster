@@ -16,13 +16,13 @@
 	
 <h1>Poll #<%= @poll.id %></h1>
 
-		<%= link_to "A", vote_path(@poll.event.id, :value => "A"), :class => "vote_button a", :remote => true %>
+		<%= link_to "A", vote_path(@poll.event.id, :value => "A"), :class => "vote_button a" %>
 
-		<%= link_to "B", vote_path(@poll.event.id, :value => "B"), :class => "vote_button b", :remote => true %>
+		<%= link_to "B", vote_path(@poll.event.id, :value => "B"), :class => "vote_button b" %>
 
-		<%= link_to "C", vote_path(@poll.event.id, :value => "C"), :class => "vote_button c", :remote => true %>
+		<%= link_to "C", vote_path(@poll.event.id, :value => "C"), :class => "vote_button c" %>
 
-		<%= link_to "D", vote_path(@poll.event.id, :value => "D"), :class => "vote_button d", :remote => true %>
+		<%= link_to "D", vote_path(@poll.event.id, :value => "D"), :class => "vote_button d" %>
 
 
 </body>

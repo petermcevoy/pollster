@@ -21,7 +21,12 @@ class ResponsesController < ApplicationController
 		end
 		
 		if @response.save
-			render :action => "vote", :format => :js
+			broadcast "/vote/#{@event.id}/#{@poll.id}", {:value => @response.value.downcase, :id => @response.identifier, :multiple => @poll.multiple}
+			if params[:ajax] == "1"
+				render :text => "OK"
+			else
+				redirect_to "#{@event.name}.lvh.me:3000"
+			end
 		else
 			render :text => "fail"
 		end

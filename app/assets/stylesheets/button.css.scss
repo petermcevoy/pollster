@@ -44,6 +44,17 @@ a.vote_button {
 		border:1px inset #e5e5e5;
 	}
 	
+	&.checked {
+		background-image: url("/check.png")	!important;
+		background-repeat: no-repeat				!important;
+		background-position: bottom right 	!important;
+	}
+
+	&.a {background-color: #aaa; }
+	&.b {background-color: #123456; }
+	&.c {background-color: #81A18A; }
+	&.d {background-color: #A19191; }
+	
 	&.a {background-image: -webkit-linear-gradient(top, rgba(170,170,170,0), rgba(170,170,170,0.5)); /*background-color: #aaa;*/ }
 	&.b {background-image: -webkit-linear-gradient(top, rgba(18,52,86,0), rgba(18,52,86,0.5)); /*background-color: #123456;*/ }
 	&.c {background-image: -webkit-linear-gradient(top, rgba(129,161,138,0), rgba(129,161,138,0.5)); /*background-color: #81A18A;*/ }

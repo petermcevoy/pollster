@@ -3,7 +3,24 @@
 
 $(function(){
 	
-
+	//Listen for press
+	$(".vote_button").click(function(){
+		var button = $(this)
+		
+		$.rails.ajax({
+			url: button.attr("href")+"&ajax=1",
+			success: function(data)	{	
+																if (data == "OK") {
+																	$(".vote_button").removeClass("checked")
+																	button.addClass("checked")
+																}
+															}
+		});		
+		
+		return false;
+		
+	})
+	
 	
 	//CHANGE=
 	var faye = new Faye.Client('http://192.168.1.202:9292/faye')
