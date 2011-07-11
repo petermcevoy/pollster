@@ -3,6 +3,8 @@ root = exports ? this
 canvas = ""
 ctx = ""
 root.squares = []
+root.show = true
+root.animation = true
 
 
 square_size = 25
@@ -54,18 +56,21 @@ root.clear_histogram = ->
 
 render = ->
 	ctx.clearRect(0,0,canvas.width,canvas.height)
-	TWEEN.update();
-	for square in squares
-		do (square) ->
-			ctx.fillStyle = colors[square.value]
-			ctx.fillRect(square.position.x + 5,canvas.height-100-square.position.y,square_size,square_size)
-	
-	#´labels
-	ctx.font = "bold 18px sans-serif";
-	for i of letters
-		if columns[i].n_squares != 0
-			ctx.fillStyle = colors[i]
-			ctx.fillText(letters[i].value.toUpperCase(), letters[i].position.x, canvas.height-40);
+	if root.show == true
+		TWEEN.update();
+		for square in squares
+			do (square) ->
+				ctx.fillStyle = colors[square.value]
+				tmp_position = square.position if root.animation == true
+				tmp_position = square.target_position if root.animation == false
+				ctx.fillRect(tmp_position.x + 5,canvas.height-100-tmp_position.y,square_size,square_size)
+
+		#´labels
+		ctx.font = "bold 18px sans-serif";
+		for i of letters
+			if columns[i].n_squares != 0
+				ctx.fillStyle = colors[i]
+				ctx.fillText(letters[i].value.toUpperCase(), letters[i].position.x, canvas.height-40);
 	
 	
 

@@ -46,6 +46,7 @@ class PollsController < ApplicationController
 
 		@poll.multiple = params[:multiple] if params[:multiple]
 		@poll.receives_votes = params[:receives_votes] if params[:receives_votes]
+		@poll.animation = params[:animate_results] if params[:animate_results]
 		
 		@poll.save
 		render :text => "OK"

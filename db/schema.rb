@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110630133722) do
+ActiveRecord::Schema.define(:version => 20110711152626) do
 
   create_table "events", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20110630133722) do
     t.integer  "n_options"
     t.boolean  "multiple",       :default => false
     t.boolean  "receives_votes", :default => false
+    t.boolean  "animation",      :default => true
   end
 
   create_table "responses", :force => true do |t|

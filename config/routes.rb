@@ -6,6 +6,7 @@ Pollster::Application.routes.draw do
   match "/events/:id/start" => "events#start"
   match "/events/:id/graph" => "events#graph", :as => :graph
   match "/events/:id/reset_options" => "events#reset_options"
+	match '/' => 'responses#button', :constraints => { :subdomain => /.+/ }  
   resources :events do
     resources :polls
 		

@@ -18,8 +18,9 @@
 		<% if @event.polls.last.id.to_s == params[:poll_id] %>
 			<hr/>
 			Recieve votes <%= check_box_tag "receives_votes", nil, @poll.receives_votes %><hr/>
+			Allow multiple votes <%= check_box_tag "allow_multiple", nil, @poll.multiple %><hr/>
 			Show results <%= check_box_tag "show_results", nil, true %><hr/>
-			Allow multiple votes <%= check_box_tag "allow_multiple", nil, @poll.multiple %>
+			Animate results <%= check_box_tag "animate_results", nil, @poll.animation %>
 		<% end %>
 		<hr/>
 		<%= link_to "back", event_path(@event) %>
@@ -50,6 +51,8 @@
 		<% else %>
 			data = []
 		<% end %>
+		
+		<%= "animation = false;" if @poll.animation == false %>
 		
 		
 		$(function(){

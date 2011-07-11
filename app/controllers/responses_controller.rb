@@ -1,14 +1,14 @@
 class ResponsesController < ApplicationController
 	
+	before_filter :get_event
+	
 	def button
-		@poll = Event.find_by_id(params[:id]).polls.last
+		@poll = @event.polls.last
 		render :layout => false
 	end
 	
 	def vote
 		#get poll id from self do not rely on client info
-		#get event from subdomain
-		@event = Event.find_by_id(params[:event_id])
 		@poll = @event.polls.last
 		
 		#check if already voted
@@ -26,6 +26,17 @@ class ResponsesController < ApplicationController
 			render :text => "fail"
 		end
 		
+	end
+	
+	private
+	
+	def get_event
+		#gets event either from subdomain or id param (id param if not using subdomain)
+		if !request.subdomain.empty?
+			@event = Event.find_by_name(request.subdomain)
+		else
+			 @event = Event.find_by_id(params[:id])
+		end
 	end
 	
 end

@@ -55,7 +55,16 @@ $(function(){
 	$("input#show_results").change(function(){
 		var self = $(this)
 		if ($(this).is(':checked')) {location.reload()}
-		else { clear_histogram() }
+		else { show = false }
+	})
+	
+	$("input#animate_results").change(function(){
+		var self = $(this)
+		$(this).attr("disabled","true")
+		var set_to = 0
+		animation = false
+		if ($(this).is(':checked')) {set_to = 1; animation = true}
+		$.ajax({url: "/events/"+event_id+"/polls/"+poll_id, type: "PUT", data: {animate_results: set_to}, success: function(){self.removeAttr("disabled")} })
 	})
 	
 	
