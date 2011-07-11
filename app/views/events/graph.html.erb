@@ -9,6 +9,15 @@
 	var event_id = <%= @event.id %>
 	var poll_id = <%= params[:poll_id] %>
 </script>
+<style>
+
+	body {
+		
+		background-color: <%= @event.options[:bg_color] %> !important;
+		
+	}
+
+</style>
 <%= csrf_meta_tags %>
 </head>
 <body class="graph">
