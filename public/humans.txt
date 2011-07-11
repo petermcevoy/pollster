@@ -1,0 +1,12 @@
+/* TEAM */
+
+Creator: Peter McEvoy
+Site: http://peter.mcevoy.se
+Twitter: @macint
+Location: Sweden
+							
+/* SITE */
+                      
+Last update: YYYY/MM/DD
+Components: jQuery, Rails, coffeescript.                           
+Software: Textmate, gimp
