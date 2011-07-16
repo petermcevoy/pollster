@@ -3,7 +3,7 @@
 <head>
   <%= stylesheet_link_tag "application" %>
 <!-- CHANGE= -->
-  <%= javascript_include_tag "graph", "http://192.168.1.202:9292/faye.js" %>
+  <%= javascript_include_tag "graph", "http://#{request.host}:9292/faye.js" %>
   <!-- loads additional styles specified in manifest.json -->
 <script>
 	var event_id = <%= @event.id %>
@@ -21,6 +21,12 @@
 <%= csrf_meta_tags %>
 </head>
 <body class="graph">
+
+	<div class="button_address">
+		<% if POLLSTER_ENV == 'global' %>
+			http://<%= @event.name %>.site-url.com
+		<% end %>
+	</div>
 
 	<div class="graph_menu current_poll">
 		This poll is <span class="poll_status"><%= @event.polls.last.id.to_s == params[:poll_id] ? "CURRENT" : "ARCHIVED" %></span>
@@ -50,7 +56,15 @@
 	
 
 	<script type="text/javascript" charset="utf-8">
-	
+
+		<% if POLLSTER_ENV == 'local' %>
+			var port = ""
+			if (location.port != "") {
+				port = ":"+location.port
+			}
+			$("div.button_address").html("http://"+location.hostname+port+"/events/"+event_id+"/button")
+		<% end %>
+
 		<% if @responses %>
 			data = [
 				<% @responses.each do |r| %>

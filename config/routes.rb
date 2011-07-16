@@ -2,7 +2,7 @@ Pollster::Application.routes.draw do
 
 	match "/events/:event_id/poll/:id/graph" => "polls#graph", :as => :poll_graph
 	match "/events/:event_id/vote" => "responses#vote", :as => :vote
-	match "/events/:id/button" => "responses#button", :as => :button
+	match "/events/:event_id/button" => "responses#button", :as => :button
   match "/events/:id/start" => "events#start"
   match "/events/:id/graph" => "events#graph", :as => :graph
   match "/events/:id/reset_options" => "events#reset_options"

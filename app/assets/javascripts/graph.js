@@ -8,7 +8,7 @@
 $(function(){
 	//CHANGE=
 	current_poll = 1
-	var faye = new Faye.Client('http://192.168.1.202:9292/faye')
+	var faye = new Faye.Client('http://'+location.hostname+':9292/faye')
 	faye.subscribe("/vote/"+event_id+"/"+poll_id, function(vote) {
 		var json_var = jQuery.parseJSON(vote)
 		new_data(json_var)

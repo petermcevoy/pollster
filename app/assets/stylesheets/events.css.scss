@@ -28,6 +28,20 @@ body.graph{
 		padding:20px, 0, 20px, 0;
 	}
 	
+	div.button_address{
+		position:absolute;
+		left:50%;
+		top:4px;
+		width:250px;
+		text-align:center;
+		margin-left:-129px;
+		opacity:0.5;
+		font-weight:bold;
+		text-shadow: #fff 0px 0px 20px;
+		padding:4px;
+	}
+	
+	
 	div.graph_menu {
 		
 		text-shadow: #999 0px 0px 10px;

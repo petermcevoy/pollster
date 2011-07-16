@@ -23,7 +23,7 @@ $(function(){
 	
 	
 	//CHANGE=
-	var faye = new Faye.Client('http://192.168.1.202:9292/faye')
+	var faye = new Faye.Client('http://'+location.hostname+':9292/faye')
 	faye.subscribe("/button/"+event_id, function(data) {
 		var json_var = jQuery.parseJSON(data)
 		

@@ -1,6 +1,6 @@
 class ResponsesController < ApplicationController
 	
-	before_filter :get_event
+	before_filter :get_event, :except => :vote
 	
 	def button
 		@poll = @event.polls.last
@@ -9,6 +9,8 @@ class ResponsesController < ApplicationController
 	
 	def vote
 		#get poll id from self do not rely on client info
+		# CHANGE===== chage to work with subdomains
+		@event = Event.find_by_id(params[:event_id])
 		@poll = @event.polls.last
 		
 		#check if already voted
@@ -36,11 +38,14 @@ class ResponsesController < ApplicationController
 	private
 	
 	def get_event
-		#gets event either from subdomain or id param (id param if not using subdomain)
-		if !request.subdomain.empty?
+		#POLLSTER_ENV is set in environment.rb
+		# gets event id either from url or from subdomain, if there is a subdomain specified (and env is global)
+		if !request.subdomain.empty? and POLLSTER_ENV == 'global'
 			@event = Event.find_by_name(request.subdomain)
+			logger.info("sub")
 		else
-			 @event = Event.find_by_id(params[:id])
+			 @event = Event.find_by_id(params[:event_id])
+			logger.info("no-sub")
 		end
 	end
 	
