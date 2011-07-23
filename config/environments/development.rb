@@ -24,4 +24,7 @@ Pollster::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+	#TLD_SIZE
+	TLD_SIZE = 1
 end
