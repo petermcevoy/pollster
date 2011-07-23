@@ -53,5 +53,5 @@ Pollster::Application.configure do
   config.active_support.deprecation = :notify
 
 	#TLD-size
-	TLD_SIZE = 3
+	TLD_SIZE = 2
 end
