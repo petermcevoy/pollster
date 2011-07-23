@@ -11,7 +11,11 @@ class ApplicationController < ActionController::Base
 	def broadcast(channel, msg)
 		message = {:channel => channel, :data => msg.to_json}
 		#CHANGE=
-		uri = URI.parse("http://#{request.host}:9292/faye")
+		if POLLSTER_ENV == "global"
+			uri = URI.parse("http://#{POLLSTER_HOSTNAME}:9292/faye")
+		else
+			uri = URI.parse("http://#{request.host}:9292/faye")
+		end
 		Net::HTTP.post_form(uri, :message => message.to_json)
 	end
 
