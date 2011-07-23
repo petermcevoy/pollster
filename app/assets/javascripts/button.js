@@ -31,13 +31,13 @@ $(function(){
 		
 		
 		update_view(json_var)
-		
 		console.log(json_var)
 		
 	});
 	
 
 	update_view = function(data) {
+		$(".vote_button").removeClass("checked")
 		$("h1").text("Poll #"+data["poll_id"])
 
 		console.log(parseInt(data["options"]))
