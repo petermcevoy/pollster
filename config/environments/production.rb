@@ -53,5 +53,10 @@ Pollster::Application.configure do
   config.active_support.deprecation = :notify
 
 	#TLD-size
-	TLD_SIZE = 2
+	if POLLSTER_ENV == "global"
+		TLD_SIZE = 3
+	else
+		TLD_SIZE = 1
+	end
+	
 end
