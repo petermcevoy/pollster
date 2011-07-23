@@ -5,5 +5,7 @@ require File.expand_path('../application', __FILE__)
 #POLLSTER_ENV = "local"
 POLLSTER_ENV = "global"
 
+POLLSTER_URL = "mlinux.ath.cx"
+
 # Initialize the rails application
 Pollster::Application.initialize!

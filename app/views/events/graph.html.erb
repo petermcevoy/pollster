@@ -24,7 +24,7 @@
 
 	<div class="button_address">
 		<% if POLLSTER_ENV == 'global' %>
-			http://<%= @event.name %>.site-url.com
+			http://<%= @event.name %>.<%= POLLSTER_URL %>
 		<% end %>
 	</div>
 
