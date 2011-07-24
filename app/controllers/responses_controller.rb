@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
 			@response.value = params[:value]
 			logger.info("edit")
 		else
+			session[:vote] = true
 			@response = @poll.responses.new(:value => params[:value], :identifier => session[:session_id])
 		end
 		
