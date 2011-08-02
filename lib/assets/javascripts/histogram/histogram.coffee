@@ -133,7 +133,7 @@ root.recalc_squares = ->
 		
 		#letter positioning
 		for i of letters
-			letters[i].set_pos() if columns[i].used
+			letters[i].set_pos() if columns[i].n_squares != 0
 	
 root.reset_display_vars = ->
 	square_size = 25
