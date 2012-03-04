@@ -2,6 +2,8 @@
 //= require jquery_ujs
 //= require histogram/histogram
 //= require histogram/lib/Tween
+//= require_self
+//= require faye-browser-min
 
 
 

@@ -8,7 +8,7 @@
 		var info = {poll_id: <%= @poll.id %>, options: <%= @poll.n_options %>}
 	</script>
 <!-- CHANGE= -->
-  <%= javascript_include_tag "button", "http://#{request.host}:9292/faye.js" %>
+  <%= javascript_include_tag "button" %>
   <!-- loads additional styles specified in manifest.json -->
   </head>
 <body class="button">

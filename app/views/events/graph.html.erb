@@ -3,7 +3,7 @@
 <head>
   <%= stylesheet_link_tag "application" %>
 <!-- CHANGE= -->
-  <%= javascript_include_tag "graph", "http://#{request.host}:9292/faye.js" %>
+  <%= javascript_include_tag "graph" %>
   <!-- loads additional styles specified in manifest.json -->
 <script>
 	var event_id = <%= @event.id %>
