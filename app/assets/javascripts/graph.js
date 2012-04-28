@@ -8,10 +8,11 @@
 
 
 $(function(){
+	
 	//CHANGE=
 	current_poll = 1
-	var faye = new Faye.Client('http://'+location.hostname+':9292/faye')
-	faye.subscribe("/vote/"+event_id+"/"+poll_id, function(vote) {
+	var client = new Faye.Client('http://'+location.hostname+':9292/faye')
+	client.subscribe("/vote/"+event_id+"/"+poll_id, function(vote) {
 		var json_var = jQuery.parseJSON(vote)
 		new_data(json_var)
 	});

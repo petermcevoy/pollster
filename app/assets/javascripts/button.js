@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_self
-//= require faye-browser-min
+//= require faye-browser-min.js
 
 $(function(){
 	
@@ -25,8 +25,9 @@ $(function(){
 	
 	
 	//CHANGE=
-	var faye = new Faye.Client('http://'+location.hostname+':9292/faye')
-	faye.subscribe("/button/"+event_id, function(data) {
+	var client = new Faye.Client('http://'+location.hostname+':9292/faye');
+
+	client.subscribe("/button/"+event_id, function(data) {
 		var json_var = jQuery.parseJSON(data)
 		
 
@@ -34,7 +35,6 @@ $(function(){
 		
 		update_view(json_var)
 		console.log(json_var)
-		
 	});
 	
 
