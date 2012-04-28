@@ -1,9 +1,5 @@
 Pollster::Application.routes.draw do
 
-  faye_server '/faye', timeout: 25 do
-    listen(9292)
-  end
-
 	match "/events/:event_id/poll/:id/graph" => "polls#graph", :as => :poll_graph
 	match "/events/:event_id/vote" => "responses#vote", :as => :vote
 	match "/events/:event_id/button" => "responses#button", :as => :button
