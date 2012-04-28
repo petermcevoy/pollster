@@ -20,7 +20,7 @@ gem 'json'
 gem 'sass-rails', "~> 3.1.0"
 gem 'coffee-script'
 gem 'uglifier'
-gem 'faye-rails'
+gem 'faye', '0.6.1'
 gem "bcrypt-ruby"
 
 gem 'jquery-rails'
