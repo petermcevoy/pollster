@@ -5,3 +5,7 @@ tmp/
 .sass-cache/
 vendor/cache/*
 config/database.yml
+.powrc
+.rvmrc
+
+.DS_Store
