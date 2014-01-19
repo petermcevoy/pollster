@@ -71,6 +71,11 @@ render = ->
 			if columns[i].n_squares != 0
 				ctx.fillStyle = colors[i]
 				ctx.fillText(letters[i].value.toUpperCase(), letters[i].position.x, canvas.height-40);
+		
+	ctx.font = "normal 18px sans-serif";
+	ctx.fillStyle = root.colors["a"];
+	vote_str = if squares.length == 1 then "response." else "responses."
+	ctx.fillText(squares.length+" "+vote_str,8,canvas.height-10);
 	
 	
 
