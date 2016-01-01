@@ -1,0 +1,17 @@
+.bundle
+db/*.sqlite3
+log
+log/*
+tmp
+tmp/*
+public/stylesheets/.sass-cache
+.sass-cache/
+config/initializers/environment_variables.rb
+.powrc
+.rvmrc
+.rbenv-gemsets
+.rbenv-vars
+*.swp
+.DS_Store
+*.DS_Store
+.git

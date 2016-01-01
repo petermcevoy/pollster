@@ -6,11 +6,7 @@ Pollster::Application.routes.draw do
   match "/events/:id/start" => "events#start"
   match "/events/:id/graph" => "events#graph", :as => :graph
   match "/events/:id/reset_options" => "events#reset_options"
-	if Rails.env == "production" and POLLSTER_ENV == "global"
-		match '/' => 'responses#button', :constraints => { :subdomain => /.pollster/ }
-	else
-		match '/' => 'responses#button', :constraints => { :subdomain => /.+/ }
-	end
+	match '/' => 'responses#button', :constraints => { :subdomain => /.+/ }
 	
   
 	resources :events do

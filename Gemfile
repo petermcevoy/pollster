@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+#ruby "1.9.3"
+
 gem 'rails', '~> 3.1.0'
 
 # Bundle edge Rails instead:
@@ -8,11 +10,12 @@ gem 'rails', '~> 3.1.0'
 
 
 group :development do
-	gem 'sqlite3'
+  gem 'sqlite3'
 end
 
+
 group :production do
-	#gem 'mysql2'
+	gem 'pg'
 end
 
 # Asset template engines
