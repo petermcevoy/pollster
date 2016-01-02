@@ -56,6 +56,6 @@ Pollster::Application.configure do
   config.active_support.deprecation = :notify
 
 	#TLD-size
-  TLD_SIZE = ENV["TLD_SIZE"] || 1
+  TLD_SIZE = ENV["TLD_SIZE"].to_i || 1
 	
 end
