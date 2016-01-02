@@ -20,7 +20,7 @@ end
 
 # Asset template engines
 gem 'json'
-gem 'sass-rails', "~> 3.1.0"
+gem 'sass-rails', "3.1.4"
 gem 'coffee-script'
 gem 'uglifier'
 gem 'faye'

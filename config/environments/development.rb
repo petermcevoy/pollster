@@ -22,8 +22,11 @@ Pollster::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  # Do not compress assets
+  # assets
+  config.serve_static_assets = true
   config.assets.compress = false
+  config.assets.compile = true
+  config.assets.digest = false
 
 	#TLD_SIZE
 	TLD_SIZE = 1

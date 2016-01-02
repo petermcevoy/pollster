@@ -39,5 +39,6 @@ module Pollster
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.precompile += ["graph.js", "button.js", "outside.css"]
   end
 end
