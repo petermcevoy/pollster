@@ -1,0 +1,23 @@
+version: '2'
+
+volumes:
+  pollster_data: {}
+ 
+services:
+  box:
+    image: busybox
+    volumes:
+      - /app/db/sqlite
+      - /box
+  app:
+    build: .
+    command: ./script/start.sh
+    volumes:
+      - /app/public
+    volumes_from:
+      - box
+    ports:
+      - "3000"
+      - "9292:9292"
+    env_file:
+      - ./production.env

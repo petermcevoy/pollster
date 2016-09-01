@@ -6,16 +6,17 @@ Pollster::Application.configure do
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
 
-  # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  # For containers we want everything hosted through rails's static asset server.
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.manifest = Rails.root.join("public/assets")
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
+  config.assets.precompile += %w( button.js  graph.js responses.js)
 
   # Specify the default JavaScript compressor
   #config.assets.js_compressor  = :uglifser
@@ -50,7 +51,7 @@ Pollster::Application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = true
+  config.i18n.fallbacks = false
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
