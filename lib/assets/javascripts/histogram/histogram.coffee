@@ -1,5 +1,12 @@
 root = exports ? this
 
+window.requestAnimFrame = (callback) ->
+  return  window.requestAnimationFrame(callback)       ||
+          window.webkitRequestAnimationFrame(callback) ||
+          window.mozRequestAnimationFrame(callback)    ||
+          (callback) ->
+            window.setTimeout(callback, 1000 / 60)
+
 canvas = ""
 ctx = ""
 root.squares = []
@@ -43,16 +50,16 @@ root.start_histogram = (canvas_element, data) ->
 			squares.push(s)
 			data_index["id_"+obj.id] = s
 	recalc_squares()
-	
-	setInterval( ->
-		render()
-	,25)
+	render_loop()
 
 root.clear_histogram = ->
 	root.squares = []
 	root.data_index = {}
 	recalc_squares()
 	
+render_loop = ->
+  window.requestAnimFrame( render_loop )
+  render()
 
 render = ->
 	ctx.clearRect(0,0,canvas.width,canvas.height)
