@@ -14,5 +14,7 @@ RUN gem install bundler
 
 ADD . $app
 
+EXPOSE 3000
+
 #CMD rails s -b 0.0.0.0
 CMD ./script/start.sh
