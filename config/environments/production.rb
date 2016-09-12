@@ -16,7 +16,7 @@ Pollster::Application.configure do
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
-  config.assets.precompile += %w( button.js  graph.js responses.js)
+  config.assets.precompile += %w( button.js  graph.js responses.js outside.css)
 
   # Specify the default JavaScript compressor
   #config.assets.js_compressor  = :uglifser

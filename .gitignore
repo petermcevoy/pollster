@@ -2,6 +2,7 @@
 db/*.sqlite3
 log/*.log
 tmp/*
+deploy.sh
 public/stylesheets/.sass-cache/*
 .sass-cache/
 config/database.yml

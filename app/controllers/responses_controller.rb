@@ -24,7 +24,7 @@ class ResponsesController < ApplicationController
 			if params[:ajax] == "1"
 				render :text => "OK"
 			else
-				redirect_to "#{@event.name}.lvh.me:3000"
+				redirect_to ""
 			end
 		else
 			render :text => "fail"

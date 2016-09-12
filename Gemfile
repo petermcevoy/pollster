@@ -31,6 +31,7 @@ gem 'jquery-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
+gem 'unicorn-worker-killer'
 
 # Deploy with Capistrano
 # gem 'capistrano'

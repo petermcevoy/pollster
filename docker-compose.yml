@@ -17,7 +17,7 @@ services:
     volumes_from:
       - box
     ports:
-      - "3000"
       - "9292:9292"
+      - "8081:3000"
     env_file:
       - ./production.env
